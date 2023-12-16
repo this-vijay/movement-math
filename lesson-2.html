@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Topology of Movement</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Unica+One|Rubik|Muli|Prompt|Vollkorn&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script src="./libraries/katex.min.js"></script>
+  <script src="./libraries/p5.min.js"></script>
+  <script src="./libraries/marked.min.js"></script>
+  <script src="./libraries/vue.js"></script>
+  <script src="./libraries/vue-observe-visibility.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="description" content="Interactive Sandbox" />
+
+</head>
+<body>
+
+
+<div id="root" class="container">
+
+<md>
+# The Topology of Movement
+
+<div class="flex-container">
+ <img src="./images/banner-2.png" class="shrinkToFit" width="100%" style="border:2px solid #E1DED2; border-radius: 15px;">
+</div>
+
+In this second lesson, we will investigate vanishing points in visual art, and start to appreciate just how powerful they can be.
+
+</md>
+
+<p> Video 2A.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/XIMLoLxmTDw"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<challenge label="Challenge 1" palette="past" image="./images/worksheet1-thumb.png" instruction="Complete the third perspective view of the tiled floor, using only a straightedge.  Then, click here to upload a photo of your drawing to padlet!" worksheet="./worksheets/perspective-worksheet1.pdf" padlet="https://padlet.com/vijayravikumar/ktdx4rrb538280e5">
+</challenge>
+
+
+<p> Video 2B.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+
+
+
+<mcq label="Exercise 1" palette="past" :images="[`./images/floor3_grid_texture.jpg`]" question="In our construction, we assumed the initial tile is a perspective view of a square.  If we merely assume it is a perspective view of some parallelogram, then where will our construction fail?" :choices="[
+    {
+      correct: false,
+      answer: `The opposite edges of the base tile will not be parallel, so we will be unable to construct a single vanishing point on the picture plane.`,
+      response: `No, the opposite edges of a parallelogram will be parallel to each other!`
+    },
+    {
+      correct: false,
+      answer: `The diagonals of the tiles will have a vanishing point lying off of the horizon line, so we will have no way of locating it on the picture plane.`,
+      response: `No, the diagonals will lie on the ground plane, so by the Horizon Line Theorem, they will have vanishing points lying on the horizon line.`
+    },
+    {
+      correct: false,
+      answer: `The diagonals of the tiles will no longer all be parallel, so they won't share a vanishing point in the picture plane.`,
+      response: `No, the parallelograms will still tile the floor, and their diagonals will still form a family of parallel lines.  Try drawing a parallelogram tiling to convince yourself!`
+    },
+    {
+      correct: true,
+      answer: `It will not fail!  The same exact construction will work, and will produce a perspective view of an evenly spaced parallelogram tiling.`,
+      response: `Correct!  Sorry, this was trick question...`
+    }        
+  ]">
+</mcq>
+
+<p> Video 2C.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+
+<challenge label="Challenge 2" palette="past" image="./images/worksheet2-thumb.jpg" instruction="Complete the perspective view of the railway tracks, using only a straightedge.  Then, click here to upload a photo of your drawing to padlet!" worksheet="./worksheets/perspective-worksheet2.pdf" padlet="https://padlet.com/vijayravikumar/haqxqq2u4x1t05xl">
+</challenge>
+
+
+<p> Video 2D.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+
+
+
+<mcq-pictorial label="Exercise 2" palette="past" :images="[]" question="Which of the following images shows the correct placement of the third railway tie, assuming the ties are evenly spaced in real life?" :choices="[
+    {
+      correct: false,
+      answer: `A`,
+      picture: `./images/lecture-2-mcq-next-tie-A.png`, 
+      response: `Not quite. Pay attention to the diagonal line connecting the endpoint of one railway tie to the midpoint of the next railway tie.`
+    },
+    {
+      correct: true,
+      answer: `B`,
+      picture: `./images/lecture-2-mcq-next-tie-B.png`, 
+      response: `Correct!`
+    },
+    {
+      correct: false,
+      answer: `C`,
+      picture: `./images/lecture-2-mcq-next-tie-C.png`, 
+      response: `Not quite. Pay attention to the diagonal line connecting the endpoint of one railway tie to the midpoint of the next railway tie.`
+    }
+  ]">
+</mcq-pictorial>
+
+
+<p> Video 2E.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+<p> Video 2F.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+
+<p> Video 2G.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+<p> Video 2H.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+<p> Video 2I.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-2.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+
+
+<div class="nav-container" style="width: 100%;">
+ <a href="./lesson-1.html" class="nav-button"><< Lesson 1 </a>
+ <a href="./lesson-3.html" class="nav-button" >Lesson 3 >></a>
+</div>
+
+<div class="nav-container center" style="width: 100%;"> 
+ <a href="./index.html" class="nav-button" >Home</a>
+</div>
+
+
+
+</div>
+
+<!-- here we define data accessible throughout the page -->
+<script>
+let data = {
+
+  aside1: {
+    expand: false
+  },
+};
+</script>
+<!-- vue-definitions.js runs vue.js and defines the components -->
+<script src="vue-definitions.js"></script>
+
+</body>
+</html>

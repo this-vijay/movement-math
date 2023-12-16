@@ -1,0 +1,381 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+  font-size:20px;
+  line-height: 1.5;
+  font-weight: 400;
+  background-color: #4F565E;
+  color: #E1DED2;
+
+  padding: 0;
+  margin: 0;
+
+
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-family: 'Rubik', sans-serif;
+  font-weight:600;
+  font-size: 2.5rem;
+  text-align:center;
+  margin-bottom:0px;
+  text-shadow: 2px 2px #332241;
+  color: #F4E363;  
+}
+
+
+
+a {
+  color: #f0db43
+}
+
+figure {
+  display: table;
+}
+
+
+
+.nav-button{
+  border-radius: 15px;   
+  padding: 1rem; 
+  font-weight: 800; 
+  color: #F1E477; 
+  background-color: #293A4E; 
+  box-shadow: 3px 5px #332241;
+  text-decoration: none;  
+  transition: 0.2s
+}
+
+.nav-button:hover {
+  background-color: #536E8D;
+  color: #E1DED2;
+  transition: 0.2s
+}
+
+.chapter-link img{
+  border:3px solid #332241;
+  /*box-shadow: 3px 5px #332241;*/
+  border-radius: 15px;
+  transition: 0.2s
+}
+
+.chapter-link:hover img{
+    -webkit-filter: drop-shadow(0px 4px 8px yellow) sepia(100%);
+    filter: drop-shadow(0px 4px 8px yellow) sepia(100%);
+    transition: 0.2s
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: top;
+  text-align:  center;
+  font-family: 'Rubik', sans-serif;
+  font-weight:700;
+  font-size: 1.8rem;
+}
+
+.answer {
+  display: table-caption;
+  caption-side: bottom;
+  text-align:  center;
+  font-family: 'Rubik';
+  font-weight:400;
+  font-size: 1.2rem;
+  text-transform: none;
+  color: black;
+}
+
+
+
+aside {
+  background-color: rgb(40, 32, 68);
+  color: rgb(255, 161, 155);
+  font-size: 1rem;
+  font-style: italic;
+  padding: 1rem;
+  text-align: justify;
+}
+
+.video-container {
+    overflow: hidden;
+    position: relative;
+    width:100%;      
+    border:3px solid black;
+}
+
+.video-container::after {
+    padding-top: 56.25%;
+    display: block;
+    content: '';
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.exercise-box {
+  background-color: palegoldenrod;
+  padding: 20px; 
+  margin-top: 30px; 
+  margin-bottom: 30px;  
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.exercise-image{
+  background-color: #E1DED2; 
+  border-radius: 15px;   
+  box-shadow: 3px 5px rgba(0, 0, 0, 0.5);
+  min-width: 280px;
+}
+
+.solution-image{
+  background-color: #E1DED2; 
+  border-radius: 5px;   
+  padding: 5px; 
+}
+
+.past{
+  background-color: #a3acaa;
+  box-shadow: 5px 10px #262526;
+  color:  black;
+}
+
+
+.present{
+  background-color: #663f3a;
+  box-shadow: 5px 10px #2e1e1c;
+  color:  white;
+}
+
+.future{
+  background-color: #58355e;
+  box-shadow: 5px 10px #1F0F2D;
+  color:  white;
+}
+
+.condorcet{
+  background-color: #58665f;
+  box-shadow: 5px 10px #2e2e27;
+  color:  white;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+   align-items: center;
+   text-align: center;
+}
+
+.nav-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap:  10px;
+  margin:  10px;
+  padding:  10px;
+}
+.flex-container > div, img, a{
+  margin: 10px;
+  /* padding: 10px; */
+}
+
+.container {
+  max-width: 660px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.center-inline * {
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-family: 'Unica One', sans-serif;
+  font-weight:500;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  text-align: center;
+  color: #FFC222;
+  margin: 20px 10px 30px;
+}
+
+h2 a {
+  text-decoration: none;
+}
+
+h2>a:hover {
+  color: #E1DED2;
+}
+
+h3 {
+  margin-top: 0px;
+  text-align:center;
+  font-weight:500;
+  font-size:1.2rem;
+}
+
+h4 {
+  font-family: 'Unica One', sans-serif;
+  font-weight:800;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  float: left;
+  color: black;
+  margin: 0px 20px 0px;
+  border-radius: 15px;
+  display:  inline-block;
+}
+
+h5 {
+  font-family: 'Nunito', sans-serif;
+  font-weight:700;
+  font-size: 1.4rem;
+  float: top;
+  color: #E1DED2;
+  margin: 20px 20px 30px;
+  background-color: #293A4E;
+  border-radius: 15px;
+  padding: 10px;
+  display:  inline-block;
+  text-align: left;
+  box-shadow: 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+p {
+  text-align: justify;
+}
+
+.false {
+  color: #B23423;
+  font-weight:800;
+}
+
+.true {
+  color: #2D63B7;
+  font-weight:800;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.button {
+  background-color: #008CBA;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Unica One', sans-serif;
+  font-size: 1.5rem;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: white; /* Green */
+  color: #008CBA;
+}
+
+/* For devices larger than 200px */
+@media (min-width: 200px) {
+  .container {
+    width: 90%;
+    padding: 0;
+  }
+}
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; 
+  }
+}
+
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .container {
+    width: 80%;
+  }
+}
+
+
+/* For devices smaller than 500px */
+@media (max-width: 500px) {
+  .container {
+    font-size: 16px;
+  }
+  h1 {
+    font-size:  1.5rem;
+  }
+  h2 {
+    font-size:  1.2rem;
+    margin: 10px 5px 0px;
+  }
+  h5 {
+    font-size:  1rem;
+    padding: 10px;
+    margin: 10px 5px 5px;
+  }
+  h4 {
+    font-size: 1.2rem;
+    margin: 0px 5px 0px;
+  }
+  .exercise-box {
+    padding: 15px;  
+    font-size: 1rem;
+  }
+  .solution-image{
+    padding:  0px;
+    margin:  10px 5px 0px;
+    width: 100px;
+  }
+  .exercise-image{
+    padding: 0px;
+    margin: 10px 5px 5px;
+  }
+  figure{
+    margin:  0px 0px 0px;
+  }
+  figcaption{
+    font-size: 1.2rem;
+  }
+  .answer{
+    font-size: 1rem;
+  }
+  .nav-button{
+    padding: 5px;
+    font-size: .8rem;
+  }
+  .nav-container{
+    padding: 0px;
+  }
+}
+
+

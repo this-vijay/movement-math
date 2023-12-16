@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Topology of Movement</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Unica+One|Rubik|Muli|Prompt|Vollkorn&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script src="./libraries/katex.min.js"></script>
+  <script src="./libraries/p5.min.js"></script>
+  <script src="./libraries/marked.min.js"></script>
+  <script src="./libraries/vue.js"></script>
+  <script src="./libraries/vue-observe-visibility.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="description" content="Interactive Sandbox" />
+
+</head>
+<body>
+
+
+<div id="root" class="container">
+
+<md>
+# The Topology of Movement
+
+<div class="flex-container">
+ <img src="./images/banner-3.png" class="shrinkToFit" width="100%" style="border:2px solid #E1DED2; border-radius: 15px;">
+</div>
+
+In this third lesson, we will investigate vanishing points in visual art, and start to appreciate just how powerful they can be.
+
+</md>
+
+<p> Video 3A.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-3.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+
+
+<mcq label="Exercise 1" palette="past" :images="[`./images/box-3.PNG`]" question="If a box is oriented in two point perspective, how many edges of the box are parallel to the picture plane?" :choices="[
+    {
+      correct: false,
+      answer: `0`,
+      response: `No...that would only be true if the box were oriented in three point perspective.`
+    },
+    {
+      correct: false,
+      answer: `2`,
+      response: `Incorrect.  Notice, the edges of the box come in parallel groups of four.`
+    },
+    {
+      correct: true,
+      answer: `4`,
+      response: `Yes! The four vertical edges of the box will be parallel to the picture plane.`
+    },
+    {
+      correct: false,
+      answer: `8`,
+      response: `No...that would only be true if the box were oriented in one point perspective.`
+    }        
+  ]">
+</mcq>
+
+<p> Video 3B.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-3.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+<challenge label="Challenge 3" palette="past" image="./images/decorate.jpg" instruction="Decorate the landscape around your tracks, with boxes in one and two point perspective.  Get as creative as you like! Then, click here to upload a photo of your drawing to padlet."  padlet="https://padlet.com/vijayravikumar/5sgjvebkqq9s3fgy">
+</challenge>
+
+<p> Video 3C.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-3.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+<mcq label="Exercise 2" palette="past" :images="[`./images/eye-level.jpg`]" question="The people depicted in this image are all the same height." :choices="[
+    {
+      correct: true,
+      answer: `True`,
+      response: `Yes!  That's why there's a horizontal line in space connecting the tops of their heads.`
+    },
+    {
+      correct: false,
+      answer: `False`,
+      response: `Actually they are the same height!  The line connecting the tops of their heads is parallel to the ground plane, and converges to a point on the horizon line.`
+    }  
+  ]">
+</mcq>
+
+<mcq label="Exercise 3" palette="past" :images="[`./images/eye-level.jpg`]" question="Where is the viewer's eye level relative to any one of the subjects depicted in the image?" :choices="[
+    {
+      correct: false,
+      answer: `The viewer's eye level is above the subject's head.`,
+      response: `No.  Look at the horizon line.`
+    },
+    {
+      correct: false,
+      answer: `The viewer's eye level is equal to the subject's eye level.`,
+      response: `No.  Look at the horizon line.`
+    },  
+    {
+      correct: true,
+      answer: `The viewer's eye level is at the subject's chest.`,
+      response: `Exactly, that's were the horizon line meets all the subjects.`
+    }, 
+    {
+      correct: false,
+      answer: `The viewer's eye level is at the subject's foot.`,
+      response: `No.  Look at the horizon line.`
+    }  
+  ]">
+</mcq>
+
+<p> Video 3D.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-3.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+<p> Video 3E.</p>
+
+<div class="flex-container">
+ <img src="./images/fake-3.png" class="shrinkToFit" width="660" style="border:2px solid black">
+</div>
+
+
+
+<div class="nav-container" style="width: 100%;">
+ <a href="./lesson-2.html" class="nav-button"><< Lesson 2 </a>
+ <a href="./lesson-4.html" class="nav-button" >Lesson 4 >></a>
+</div>
+
+<div class="nav-container center" style="width: 100%;"> 
+ <a href="./index.html" class="nav-button" >Home</a>
+</div>
+
+</div>
+
+<!-- here we define data accessible throughout the page -->
+<script>
+let data = {
+
+  aside1: {
+    expand: false
+  },
+};
+</script>
+<!-- vue-definitions.js runs vue.js and defines the components -->
+<script src="vue-definitions.js"></script>
+
+</body>
+</html>
