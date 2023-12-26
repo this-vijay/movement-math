@@ -27,21 +27,236 @@
 # The Topology of Movement
 
 <div class="flex-container">
- <img src="./images/banner-2.png" class="shrinkToFit" width="100%" style="border:2px solid #E1DED2; border-radius: 15px;">
+ <img src="./images/banner-2.png" class="shrinkToFit" width="100%" style="border:3px solid #332241; border-radius: 15px;">
 </div>
 
-
+In this second lesson, we use a novel movement-based approach to  understand the shape - or <i>topology</i> - of orientation space, with the help of a simple puppet. I haven't seen this approach elsewhere, but I feel it leads to very useful insights, which are often skipped in standard treatments.
 
 </md>
 
-<p> Coming Soon!  Contents will be posted by January 1st, 2024. </p>
+<p> Without further ado, let's proceed to the first warm-up challenge:</p>
 
-
-<div class="flex-container">
- <img src="./images/coming-soon.jpg" class="shrinkToFit" width="660" style="border:2px solid black">
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/-wAlt4A1iv4"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
 </div>
 
 
+<challenge label="Challenge 1: Perform the stationary path" palette="future" image="./images/challenge-icon.png" instruction="Move your puppet in an interesting loop without changing its spatial orientation.">
+</challenge>
+
+
+<p> Okay, the first challenge was hopefully not too challenging.  Once you've completed it, you can proceed to the next video:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/44VDKj1RhdE"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+
+
+<challenge label="Challenge 2: Perform a wobble loop" palette="future" image="./images/challenge-icon.png" instruction="Move your puppet in a wobble that begins and ends at the base orientation.">
+</challenge>
+
+
+<p> Have you completed your own wobble loop?  Let's see how it compares with other wobbles:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/CYaxyE-LtuQ"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<challenge label="Challenge 3: Perform a rotation loop" palette="future" image="./images/challenge-icon.png" instruction="Perform a 360° rotation loop about an axis of your choice.">
+</challenge>
+
+
+
+<p> Did you complete the third movement challenge?  Then you're officially warmed up, and ready for the next puzzle, which involves a very important definition:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/psyEzVW87o8"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<mcq-pictorial label="Exercise 1" palette="past" :images="[]" question="Which of the following loops on the torus is non-trivial?" :choices="[
+    {
+      correct: false,
+      answer: `A`,
+      picture: `./images/loop-A.png`, 
+      response: `Not quite.  Zoom in if you need to, and see if you can gradually contract this loop to the basepoint.`
+    },
+    {
+      correct: true,
+      answer: `B`,
+      picture: `./images/loop-B.png`, 
+      response: `Correct! This loop cannot be contracted to the basepoint, since it goes around the sleeve of the torus.`
+    },
+    {
+      correct: false,
+      answer: `C`,
+      picture: `./images/loop-C.png`, 
+      response: `No, this loop can in fact be gradually deformed to the basepoint!`
+    },
+    {
+      correct: false,
+      answer: `D`,
+      picture: `./images/loop-D.png`, 
+      response: `No, this loop can easily be contracted to the basepoint.`
+    }
+  ]">
+</mcq-pictorial>
+
+<md>
+Remember, a <i>loop</i> in orientation space is a movement sequence that finishes where it began, at the <i>base orientation</i>.  And a loop is <i>trivial</i> if we can enact a gradual deformation to the stationary loop: that is, perform the loop repeatedly with small changes each time, until we reach the stationary loop.
+</md>
+
+<movement-challenge label="Challenge 4: A trivial loop in orientation space" palette="future" image="./images/challenge-icon.png" :instructions="[`Fix an axis A.  Let L be the loop that  does a  360° rotation about axis A, followed by another 360° rotation in the opposite direction about A.`, `Enact a gradual deformation of the loop L to the stationary loop. Make sure each intermediate loop starts and ends at the base orientation.`]">
+</movement-challenge>
+
+
+<p> Have you completed the fourth challenge?  Let's see how it compares with other solutions:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/XuGnlzdBdL8"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<challenge label="Challenge 5: Enact an equivalence" palette="future" image="./images/challenge-icon.png" instruction="Pick any two axes of rotation. Show that the 360° rotation loop about one axis is equivalent to the 360° rotation loop about the other axis.">
+</challenge>
+
+
+<p> Once you've enacted the gradual deformation of one 360° rotation loop to another, you can see proceed to the next challenge:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/UFy05eHrw9E"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<challenge label="Challenge 6: Two ways to track an object" palette="future" image="./images/bala-tracking.png" instruction="Find both the trivial and nontrivial loops that allow Bala's nose vector to always point at the orbiting particle.">
+</challenge>
+
+
+<p> Did you find <i>both</i> the trivial and nontrivial loops that track the particle?  If so, you can proceed to the next video:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/1i0uKbDsYc0"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<md>
+  <br>
+At every instant of the time, as θ goes from 0 to 2𝝿, the trivial loop's orientation can be achieved via a composition of two rotations:
+</md>
+
+<mcq-pictorial label="Exercise 2" palette="past" :images="[`./images/hint.gif`]" question="What spatial orientation do we achieve if we perform a 270° y-rotation followed by a 270° (-x)-rotation?" :choices="[
+    {
+      correct: false,
+      answer: `A`,
+      picture: `./images/tracking-A.png`, 
+      response: `No.  Interesting guess, but you don't return to where you started!`
+    },
+    {
+      correct: false,
+      answer: `B`,
+      picture: `./images/tracking-B.png`, 
+      response: `Not quite.  In the above image, examine the result of the 270° y-rotation.  Imagine performing a 270° (-x)-rotation to that result.`
+    },
+    {
+      correct: false,
+      answer: `C`,
+      picture: `./images/tracking-C.png`, 
+      response: `Nope.  If you're having trouble, it might be easier to think of the 270° (-x)-rotation as a 90° x-rotation.`
+    },
+    {
+      correct: true,
+      answer: `D`,
+      picture: `./images/tracking-D.png`, 
+      response: `Yes!  Note that this is also your orientation when you're 3/4 of the way through the trivial tracking loop.`
+    }
+  ]">
+</mcq-pictorial>
+
+<md>
+Somehow, performing two nontrivial loops <i>simultaneously</i> results in a trivial loop.  What's more, if we <i>concatenate</i> two nontrivial loops, performing one after the other, the result is once again a trivial loop!
+</md>
+
+<challenge label="Challenge 7: the 720° loop" palette="future" image="./images/challenge-icon.png" instruction="Enact a gradual deformation from a 720° rotation loop to the stationary loop.">
+</challenge>
+
+
+<p> I hope you were able to enact a gradual deformation of a 720° rotation loop to the stationary loop!  There are many ways to do this, but we'll examine one approach in the next video:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/nKT74iWvfhY"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+
+<mcq label="Exercise 3" palette="past" :images="[`./images/foot-bala.png`]" question="At the end of every football match, Foot-Bala returns to his base orientation.  Thus, over the course of a match, Foot-Bala traces out a loop in orientation space.  That loop must either be equivalent to the stationary loop, or to a single 360° rotation loop about the x-axis." :choices="[
+    {
+      correct: true,
+      answer: `True`,
+      response: `Correct, since all non-trivial loops are equivalent to each other.`
+    },
+    {
+      correct: false,
+      answer: `False`,
+      response: `No, the statement is true.  Because, surprisingly, all non-trivial loops in orientation space are equivalent to each other!`
+    }
+  ]">
+</mcq>
+
+<p> Okay, but how do all these loops and deformations in orientation space relate to the string trick, from the introduction video?  Let's conclude with a closer look at the string trick, and take it to its logical extreme: <i>the foam mattress trick</i>:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/qp4PyWPASco"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
 
 
 

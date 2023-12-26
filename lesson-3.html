@@ -27,22 +27,298 @@
 # The Topology of Movement
 
 <div class="flex-container">
- <img src="./images/banner-3.png" class="shrinkToFit" width="100%" style="border:2px solid #E1DED2; border-radius: 15px;">
+ <img src="./images/banner-3.png" class="shrinkToFit" width="100%" style="border:3px solid #332241; border-radius: 15px;">
 </div>
 
+In this third lesson, we introduce the quaternion number system, an extension of the real numbers whose algebraic structure perfectly captures the behavior of spatial rotations.  
+
+The quaternions give us a symbolic language for writing down all of our discoveries from the previous lessons, and will help us discover new relationships that are virtually impossible to discover purely through movement.
 
 </md>
 
-<p> Coming Soon!  Contents will be posted by January 1st, 2024. </p>
+<p> To begin with, we need to be a bit more precise in how we talk about 3-D rotations, as well as how they relate to spatial orientations.</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/ql-HM9L9MEI"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
 
 
-<div class="flex-container">
- <img src="./images/coming-soon.jpg" class="shrinkToFit" width="660" style="border:2px solid black">
+<mcq label="Exercise 1" palette="past" :images="[]" question="One of these axis-angle pairs is not like the others.  Identify the one whose rotation is distinct from the other three." :choices="[
+    {
+      correct: false,
+      answer: `[(2, -1, 2), 90°]`,
+      response: `Are you sure? You can try adding and subtracting 360° to the angle.`
+    },
+    {
+      correct: true,
+      answer: `[(-2, 1, -2), 90°]`,
+      response: `Yes!  After scaling the axis vector by -1, we are actually considering the opposite axis vector.  By the right hand rule, we'll then be performing a 90° rotation in the opposite direction!`
+    },
+    {
+      correct: false,
+      answer: `[(2/9, -1/9, 2/9), -270°]`,
+      response: `Nope. Note that the axis vector here is just the normalization  of (2,- 1, 2). And the angle is simply 90° - 360°.`
+    },
+    {
+      correct: false,
+      answer: `[(6, -3, 6), 450°]`,
+      response: `Actually, the axis vector here is just 2 times (2,- 1, 2). And the angle is simply 90° + 360°.`
+    }        
+  ]">
+</mcq>
+
+
+<mcq-pictorial label="Exercise 2" palette="past" :images="[`./images/45-deg-rotation-base.png`]" question="Under our bijection, which spatial orientation of Bala corresponds to the rotation [(1, 1, 1), 45°]." :choices="[
+    {
+      correct: false,
+      answer: `A`,
+      picture: `./images/45-deg-rotation-A.png`, 
+      response: `No, this spatial orientation corresponds to [(1, 1, 1), -45°].`
+    },
+    {
+      correct: true,
+      answer: `B`,
+      picture: `./images/45-deg-rotation-B.png`, 
+      response: `Yes, this spatial orientation corresponds to [(1, 1, 1), 45°].`
+    },
+    {
+      correct: false,
+      answer: `C`,
+      picture: `./images/45-deg-rotation-C.png`, 
+      response: `Nope, this spatial orientation corresponds to [(1, 1, -1), -45°].`
+    },
+    {
+      correct: false,
+      answer: `D`,
+      picture: `./images/45-deg-rotation-D.png`, 
+      response: `Not quite, this spatial orientation corresponds to [(1, 1, -1), 45°].`
+    }
+  ]">
+</mcq-pictorial>
+
+
+<p> Let's take a quick look at 2-D and 3-D rotation matrices, with all their advantanges and disadvantages.</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/IBHpkgSBsh4"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
 </div>
 
 
 
+<mcq-pictorial label="Exercise 3" palette="past" :images="[`./images/disko-base.png`]" question="Applying the above rotation matrix to Disko yields:" :choices="[
+    {
+      correct: true,
+      answer: `A`,
+      picture: `./images/disko-A.png`, 
+      response: `Yes! Disko has been rotated by 45°.`
+    },
+    {
+      correct: false,
+      answer: `B`,
+      picture: `./images/disko-B.png`, 
+      response: `Not quite.  First try to interpret which rotation the matrix represents (it is not 135°, which this option depicts).`
+    },
+    {
+      correct: false,
+      answer: `C`,
+      picture: `./images/disko-C.png`, 
+      response: `No. First try to interpret which rotation the matrix represents (it is not 225°, which this option depicts).`
+    },
+    {
+      correct: false,
+      answer: `D`,
+      picture: `./images/disko-D.png`, 
+      response: `Nope. First try to interpret which rotation the matrix represents (it is not 315°, which this option depicts).`
+    }
+  ]">
+</mcq-pictorial>
 
+<p> For inspiration, we'd better review the complex numbers, which perfectly capture 2-D rotation.</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/FR1GatTbftY"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+
+<mcq label="Exercise 4" palette="past" :images="[`./images/complex-product.png`]" question="Work out the above product of unit complex numbers. Hint: It may help to interpret them as rotations!
+" :choices="[
+    {
+      correct: false,
+      answer: `1`,
+      response: `No, try to figure out which angle of rotation each unit complex number represents.  Then, you can multiply them by simply adding the angles together!`
+    },
+    {
+      correct: true,
+      answer: `i`,
+      response: `Yes! The lefthand complex number represents a 30° rotation, while the righthand one represents a 60° rotation.  So their product represents a 90° rotation.`
+    },
+    {
+      correct: false,
+      answer: `-1`,
+      response: `Nah, try to figure out which angle of rotation each unit complex number represents.  Then, you can multiply them by simply adding the angles together!`
+    },
+    {
+      correct: false,
+      answer: `-i`,
+      response: `Nope, try to figure out which angle of rotation each unit complex number represents.  Then, you can multiply them by simply adding the angles together!`
+    }  
+  ]">
+</mcq>
+
+
+<p> Can we somehow generalize the complex numbers, in order to capture 3-D rotation?  Why yes, we can!</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/_zePZJrm1Rg"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<mcq label="Exercise 5" palette="past" :images="[`./images/bijection.png`]" question="To which quaternion is [(-a, -b, -c), -θ] sent in the above mapping?" :choices="[
+    {
+      correct: true,
+      answer: `cos(θ/2) + sin(θ/2)(ai + bj + ck)`,
+      response: `Yes! It is sent to the same quaternion to which [(a, b, c), θ] is sent. Which is all well and good, since these axis-angle pairs represent the same rotation.  Thus, our mapping is indeed a bijection!`
+    },
+    {
+      correct: false,
+      answer: `cos(θ/2) - sin(θ/2)(ai + bj + ck)`,
+      response: `No.  Review how sin(-x) and sin(x) compare for arbitrary values of x.`
+    },  
+    {
+      correct: false,
+      answer: `-cos(θ/2) + sin(θ/2)(ai + bj + ck)`,
+      response: `Nope.  Review how cos(-x) and cos(x) compare for arbitrary values of x.`
+    }, 
+    {
+      correct: false,
+      answer: `-cos(θ/2) - sin(θ/2)(ai + bj + ck)`,
+      response: `No, if you've arrived at this answer you've made at least two mistakes, which unfortunately do not cancel out!`
+    }  
+  ]">
+</mcq>
+
+<mcq label="Exercise 6" palette="past" :images="[`./images/quat-sample.png`]" question="What rotation does the above quaternion correspond to?  (Hint: Some mild algebraic manipulation might make it more apparent.)" :choices="[
+    {
+      correct: false,
+      answer: `A 45° rotation about the axis (1,1,0).`,
+      response: `No, look carefully at the coefficient of θ in the bijection between rotations and unit quaternions.`
+    },
+    {
+      correct: false,
+      answer: `A 45° rotation about the axis (0,0,1).`,
+      response: `No no, look carefully at the coefficient of θ in the bijection between rotations and unit quaternions...and also the components of the axis vector!`
+    },  
+    {
+      correct: true,
+      answer: `A 90° rotation about the axis (1,1,0).`,
+      response: `Correct! The real part of q is cos(θ/2): in this case cos(45°).  And the axis is easy to read off.`
+    }, 
+    {
+      correct: false,
+      answer: `A 90° rotation about the axis (0,0,1).`,
+      response: `Not quite.  You are correct about θ, but you can read off the axis of rotation more directly.`
+    }  
+  ]">
+</mcq>
+
+
+<mcq label="Exercise 7" palette="past" :images="[]" question="Which unit quaternion captures a 180° rotation about the axis (1,1,1)?" :choices="[
+    {
+      correct: false,
+      answer: `i+j+k`,
+      response: `Almost, but this isn't a unit quaternion.`
+    },
+    {
+      correct: false,
+      answer: `1+i+j+k`,
+      response: `No.  This is not a unit quaternion.`
+    },  
+    {
+      correct: true,
+      answer: `(1/√3)(i+j+k).`,
+      response: `Correct, that's the one!  Notice that more generally, any purely imaginary quaternion will give a 180° rotation.`
+    }, 
+    {
+      correct: false,
+      answer: `(1/2)(1+i+j+k)`,
+      response: `No.  This is a unit quaternion, but represents a 60° rotation.`
+    }  
+  ]">
+</mcq>
+
+
+
+
+<p> Perhaps the coolest thing about quaternions is that their product beautifully captures composition of spatial rotations.  Let's see  some exmaples of quaternion multiplication in action:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/X34RcRFYddY"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+
+<mcq label="Exercise 8" palette="past" :images="[]" question="Consider a 60° rotation about the x-axis followed by a 90° rotation about the y-axis.  By Euler’s theorem, this composition is itself a rotation about some axis L.  Which of the following vectors spans L?" :choices="[
+    {
+      correct: false,
+      answer: `(1, 1, 0)`,
+      response: `Not so fast.  Are you considering the angles of rotation? Those will affect the location of the axis L.`
+    },
+    {
+      correct: false,
+      answer: `(2/3, 1, 0)`,
+      response: `No. It's not easy to see where L lies.  But quaternion multiplication can help!`
+    },  
+    {
+      correct: false,
+      answer: `(0, 0, 1)`,
+      response: `Hang on. Are you considering the angles of rotation? Those will affect the location of the axis L.`
+    }, 
+    {
+      correct: true,
+      answer: `(1, √3, -1)`,
+      response: `Correct! You need to work out the quaternion product (√2/2 + √2/2 j)(√3/2 + 1/2 i).`
+    }  
+  ]">
+</mcq>
+
+<md>
+The fact that composition of spatial rotations is equivalent to multiplication of quaternions can be stated more precisely as follows:
+</md>
+
+<challenge label="Theorem" palette="future" image="./images/bijection.png" instruction="The bijection between 3-D rotations and unit quaternions modulo sign is in fact an isomorphism of groups.">
+</challenge>
+
+<md>
+The proof of this remarkable result is (just barely) beyond the scope of this workshop.  However, in the next lesson, we develop key ideas needed for understanding why this isomorphism holds.
+</md>
 
 <div class="nav-container" style="width: 100%;">
  <a href="./lesson-2.html" class="nav-button"><< Lesson 2 </a>

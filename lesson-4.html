@@ -27,21 +27,261 @@
 # The Topology of Movement
 
 <div class="flex-container">
- <img src="./images/banner-4.png" class="shrinkToFit" width="100%" style="border:2px solid #E1DED2; border-radius: 15px;">
+ <img src="./images/banner-4.png" class="shrinkToFit" width="100%" style="border:3px solid #332241; border-radius: 15px;">
 </div>
 
+In this fourth lesson, we tie up several loose ends.  First we use quaternions to parametrize the various loops and homotopies from Lesson Two. We then meet a virtual avatar of Bala, built in the open-source 3-D animation software Blender, who can read and perform all our previous discoveries, now in quaternion form.
 
+We then look at how quaternions act on R³ as spatial rotations, via a surprisingly simple formula for the image of a point (x, y, z) under a quaternion rotation q.  Finally, using Blender, we get a glimpse of the relations between infinitesimal rotations - also known as the <i>Lie bracket</i> on the Lie algebra of SO(3).  
 </md>
 
-<p> Coming Soon!  Contents will be posted by January 1st, 2024. </p>
+<p> First, let's try paramtetrizing a simple 360° rotation loop:</p>
 
-
-<div class="flex-container">
- <img src="./images/coming-soon.jpg" class="shrinkToFit" width="660" style="border:2px solid black">
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/1RDtiQqyujo"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
 </div>
 
 
+<mcq label="Exercise 1" palette="past" :images="[]" question="A counterclockwise x-rotation loop can be parametrized by P(θ) = cos(θ/2) + sin(θ/2)i, as θ goes from 0 to 2𝝿. 
+Which of the following functions parametrizes a *clockwise* x-rotation loop?" :choices="[
+    {
+      correct: true,
+      answer: `P(θ) = cos(θ/2) - sin(θ/2) i, as θ goes from 0 to 2𝝿`,
+      response: `Yes, the negative sign indicates the opposite axis of rotation, producing a clockwise loop thanks to the right-hand rule. But are there other possible parametrizations?`
+    },
+    {
+      correct: true,
+      answer: `P(θ) = -cos(θ/2) + sin(θ/2) i, as θ goes from 0 to 2𝝿`,
+      response: `Yes, since we are dealing with unit quaternions modulo sign, this loop is identical to the previous case, and hence clockwise. Are there other possible parametrizations?`
+    },
+    {
+      correct: true,
+      answer: `P(θ) = cos(θ/2) + sin(θ/2) i, as θ goes from 0 to -2𝝿`,
+      response: `Yes, since the angle θ is going from 0 to -2𝝿, we are tracing out a clockwise loop. But are there other possible parametrizations?`
+    },
+    {
+      correct: true,
+      answer: `P(θ) = -cos(θ/2) - sin(θ/2) i, as θ goes from 0 to -2𝝿`,
+      response: `Yes, since we are dealing with unit quaternions modulo sign, this loop is clockwise, just like the previous case. Are there other possible parametrizations?`
+    },
+    {
+      correct: true,
+      answer: `All of the above`,
+      response: `Correct! There are many ways to parametrize this loop!`
+    }
+  ]">
+</mcq>
 
+<challenge label="Challenge 1: Parametrize the trivial tracking loop" palette="future" image="./images/trivial-half.gif" instruction="Give a quaternion parametrization of the trivial tracking loop." >
+</challenge>
+
+<challenge label="Hint" palette="future" image="./images/hint.gif" instruction="Remember the decomposition from Lesson Two!" >
+</challenge>
+
+<p> Were you able to parametrize the trivial tracking loop?  There are multiple approaches, but I hope you found a way that is not too compuationally challenging!</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/51Ap1MKK4ks"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+
+<mcq label="Exercise 2" palette="past" :images="[]" question="Which of the following functions parametrizes our familiar trivial tracking loop, but in the opposite direction?" :choices="[
+    {
+      correct: false,
+      answer: `[cos(θ/2) - sin(θ/2) i] · [cos(θ/2) + sin(θ/2) j]`,
+      response: `This is just our familiar trivial tracking loop.  The left side is a (-x)-rotation, and the right side is a y-rotation.`
+    },
+    {
+      correct: false,
+      answer: `[cos(θ/2) + sin(θ/2) i] · [cos(θ/2) + sin(θ/2) j]`,
+      response: `No...this is neither the trivial tracking loop or its reverse.  But rather something you would not want to attempt in real life!`
+    },
+    {
+      correct: false,
+      answer: `[cos(θ/2) - sin(θ/2) i] · [cos(θ/2) - sin(θ/2) j]`,
+      response: `Actually...this is neither the trivial tracking loop or its reverse.  But rather something you would not want to attempt in real life!`
+    },
+    {
+      correct: true,
+      answer: `[cos(θ/2) + sin(θ/2) i] · [cos(θ/2) - sin(θ/2) j]`,
+      response: `Yes, by reversing the direction of both component loops, we reverse the direction of the composite loop.`
+    }
+  ]">
+</mcq>
+
+
+
+<p> We've seen how to parametrize loops using quaternions...But how can we parametrize homotopies, or gradual deformations of loops?</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/Doz15jgyv3w"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<mcq label="Exercise 3" palette="past" :images="[]" question="Which of the following functions Pₜ does not give a *unit* quaternion homotopy from an x-rotation loop to a y-rotation loop, as t goes from 0 to 1?" :choices="[
+    {
+      correct: true,
+      answer: `Pₜ(θ) = cos(θ/2) + (1-t)sin(θ/2) i + (t)sin(θ/2) j.`,
+      response: `Correct!  The quaternion Pₜ is not a unit quaternion for most values of t and θ.`
+    },
+    {
+      correct: false,
+      answer: `Pₜ(θ) = cos(θ/2) + √(1-t)sin(θ/2) i + (√t)sin(θ/2) j.`,
+      response: `Actually, the quaternion Pₜ is a unit quaternion for all values of t and θ.`
+    },
+    {
+      correct: false,
+      answer: `Pₜ(θ) = cos(θ/2) + √(1-t²)sin(θ/2) i + (t)sin(θ/2) j.`,
+      response: `No, the quaternion Pₜ is indeed a unit quaternion for all values of t and θ.`
+    },
+    {
+      correct: false,
+      answer: `Pₜ(θ) = cos(θ/2) + cos(t𝝿/2)sin(θ/2) i + sin(t𝝿/2)sin(θ/2) j.`,
+      response: `In fact, the quaternion Pₜ is a unit quaternion for all values of t and θ.`
+    }
+  ]">
+</mcq>
+
+<mcq label="Exercise 4" palette="past" :images="[`./images/bala-path-end.png`]" question="Consider the path Pₜ(θ) = cos(tθ/2) + sin(tθ/2) i, as θ goes from 0 to 2𝝿. For which value of t will the path Pₜ end at the above orientation? " :choices="[
+    {
+      correct: false,
+      answer: `t = 1/8`,
+      response: `No, this path would end 1/8 of the way down the original path cos(θ/2) + sin(θ/2)i, performing a 45° counterclockwise rotation.`
+    },
+    {
+      correct: true,
+      answer: `t = 7/8`,
+      response: `Yes! This path would end 7/8 of the way down the original path cos(θ/2) + sin(θ/2)i, performing a 315° counterclockwise rotation, or equivalently a 45° clockwise rotation.`
+    },
+    {
+      correct: false,
+      answer: `t = 1/4`,
+      response: `No, this path would end 1/4 of the way down the original path cos(θ/2) + sin(θ/2)i, performing a 90° counterclockwise rotation.`
+    },
+    {
+      correct: false,
+      answer: `t = 7/4.`,
+      response: `No, this path would end 7/4 of the way down the original path cos(θ/2) + sin(θ/2)i, performing a full 450° counterclockwise rotation.`
+    }
+  ]">
+</mcq>
+
+
+<p> Okay, let's put all this together and parametrize the gradual deformation from a 720° loop to a stationary loop.</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/WlhCJWUYwqg"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<mcq-large label="Exercise 5" palette="past" :images="[`./images/homotopy.png`]" question="Consider the above homotopy from the loop P₀(θ) to the loop P₁(θ).  
+Note that P₀ performs a 720° y-rotation loop.  
+We can describe P₁ as:
+" :choices="[
+    {
+      correct: true,
+      answer: `an x-rotation loop followed by a (-x)-rotation loop.`,
+      response: `Yes! By the end of the homotopy, the first 360° y-rotation has deformed to a 360° x-rotation, and the second 360° y-rotation has deformed to a 360° (-x)-rotation.`
+    },
+    {
+      correct: false,
+      answer: `a (-x)-rotation loop followed by an x-rotation loop.`,
+      response: `Very close, but not quite!  Check the directions of the loops at the final stage of the homotopy.`
+    },
+    {
+      correct: false,
+      answer: `a y-rotation loop followed by a (-y)-rotation loop.`,
+      response: `Not quite.  Notice that during the course of the homotopy, the axis of rotation gradually shifts.`
+    },
+    {
+      correct: false,
+      answer: `a (-y)-rotation loop followed by a y-rotation loop.`,
+      response: `No.  Notice that during the course of the homotopy, the axis of rotation gradually shifts.`
+    }
+  ]">
+</mcq-large>
+
+
+<p> Let's switch gears and look at a final, supremely useful application of quaternions: their action on R³ as spatial rotations: </p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/oI__hImd1S8"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<mcq label="Exercise 6" palette="past" :images="[]" question="Where does the quaternion q = k carry the point p = (1, 2, 3)?" :choices="[
+    {
+      correct: false,
+      answer: `(3,2,1)`,
+      response: `No.  There are two approaches to solving this: either interpret the quaternion as a rotation and think geometrically, or compute the quaternion product (k)(i+2k+3k)(-k).`
+    },
+    {
+      correct: false,
+      answer: `(2,1,3)`,
+      response: `Not quite.  There are two approaches to solving this: either interpret the quaternion as a rotation and think geometrically, or compute the quaternion product (k)(i+2k+3k)(-k).`
+    },
+    {
+      correct: false,
+      answer: `(-2,-1,3)`,
+      response: `No, not quite.  There are two approaches to solving this: either interpret the quaternion as a rotation and think geometrically, or compute the quaternion product (k)(i+2k+3k)(-k).`
+    },
+    {
+      correct: true,
+      answer: `(-1,-2,3)`,
+      response: `Yes!  It performs a 180° rotation about the z-axis, so it negates the x and y coordinates while fixing the z-coordinate.  It's useful to work this out algebraically as well, by computing the product (k)(i+2k+3k)(-k).`
+    }
+  ]">
+</mcq>
+<md>
+We still haven't proved that the group of 3-D rotations is isomorphic to the group of unit quaternions modulo sign.  But our formula for the action of unit quaternions on R³ is a useful starting point! 
+</md>
+<movement-challenge label="Further exploration" palette="future" :instructions="[`Prove that the group of 3-D rotations is isomorphic to the group of unit quaternions modulo sign.`, `One somewhat indirect proof of this isomorphism is given in Chapter 1 of Stillwell's 'Naive Lie Theory', but perhaps you can prove it more directly!`]">
+</movement-challenge>
+
+
+
+<p> Long ago we mentioned that even infinitesimal rotations are somehow entangled.  Using Blender, we can now see exactly how:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/HS7G1FEiSwE"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<md>
+  If you'd like to know more about Lie groups and Lie algebras, I recommend John Stillwell's <i>Naive Lie Theory</i>, which nicely complements everything we've done so far, and provides a rigorous framework for further exploration.
+</md>
 
 <div class="nav-container" style="width: 100%;">
  <a href="./lesson-3.html" class="nav-button"><< Lesson 3 </a>

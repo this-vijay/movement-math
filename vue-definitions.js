@@ -92,9 +92,59 @@ Vue.component('challenge', {
 
   template: `
   <div :class="['exercise-box', palette]">
-    <h4>{{label}}</h4>
-    <a :href="worksheet"><img :src="image" class="exercise-image shrinkToFit" width="50%"/></a>
+    <h6>{{label}}</h6>
+    <a :href="worksheet"><img :src="image" class="exercise-image shrinkToFit" width="70%"/></a>
     <a :href="padlet"><h5>{{instruction}}</h5></a>
+    <br>
+  </div>
+  `,
+
+
+  data: function() {
+    return {
+      selected: NaN
+    }
+  }
+
+})
+
+// movement challenge component
+
+
+Vue.component('movement-challenge', {
+
+  props: ['label', 'palette', 'image', 'instructions'],
+
+  template: `
+  <div :class="['exercise-box', palette]">
+    <h6>{{label}}</h6>
+    <img :src="image" class="exercise-image shrinkToFit" width="70%"/>
+    <h5 v-for="instruction in instructions">{{instruction}}</h5>
+  </div>
+  `,
+
+
+  data: function() {
+    return {
+      selected: NaN
+    }
+  }
+
+})
+// video based challenge component
+
+
+Vue.component('video-challenge', {
+
+  props: ['label', 'palette', 'video', 'instructions'],
+
+  template: `
+  <div :class="['exercise-box', palette]">
+    <h6>{{label}}</h6>
+    <div class="challenge-container center">
+      <iframe :src="video"  frameborder="0" allowfullscreen=""/></iframe>
+    </div>
+    <h5 v-for="instruction in instructions">{{instruction}}</h5>
     <br>
   </div>
   `,
@@ -136,6 +186,32 @@ Vue.component('mcq', {
 
 })
 
+// multiple choice question component with large image
+
+
+Vue.component('mcq-large', {
+
+  props: ['label', 'palette', 'images', 'question','choices'],
+
+  template: `
+  <div :class="['exercise-box', palette]">
+    <h4>{{label}}</h4>
+        <img v-for="image in images" :src="image" :class="['exercise-image', 'shrinkToFit']" width="90%"/>
+    <h5>{{question}}</h5>
+    <br>
+    <p v-for="(choice, index) in choices" :class="(choice.correct && selected == index) ? 'bold' : ''"><input type="radio" v-model="selected" :value="index">{{choice.answer}}</p>
+    <p v-for="(choice, index) in choices" v-if="index == selected" :class="choice.correct ? 'true' : 'false'">{{choice.response}}</p>
+  </div>
+  `,
+
+
+  data: function() {
+    return {
+      selected: NaN
+    }
+  }
+
+})
 
 // pictorial multiple choice question component
 

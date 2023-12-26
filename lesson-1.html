@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> 
-  <link href="https://fonts.googleapis.com/css?family=Unica+One|Rubik|Muli|Comme|Carter+One|Mako|Vollkorn&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Unica+One|Rubik|Muli|Comme|Roboto|Mako|Vollkorn&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
   <script src="./libraries/katex.min.js"></script>
   <script src="./libraries/p5.min.js"></script>
@@ -27,21 +27,214 @@
 # The Topology of Movement
 
 <div class="flex-container">
- <img src="./images/banner-1.png" class="shrinkToFit" width="100%" style="border:2px solid #332241; border-radius: 15px;">
+ <img src="./images/banner-1.png" class="shrinkToFit" width="100%" style="border:3px solid #332241; border-radius: 15px;">
 </div>
 
+<!-- If you're already quite familiar with 3-D rotations, or if you're eager to get to the movement-based puzzles, you can skip ahead to Lesson Two: exploring orientation space through movement.-->
 
+In this first lesson, we look at some basic properties of spatial orientations and rotations.  If you're already quite familiar with 3-D rotations, or if you're eager to get to the movement-based puzzles, you can safely skip ahead to <a href="./lesson-2.html" style="margin: 0;">Lesson Two: exploring orientation space through movement</a>.
+
+When exploring the set of <i>all</i> spatial orientations, one of the most basic questions we can ask is, <i>how big is this set?</i> 
 </md>
 
-<p> Coming Soon!  Contents will be posted by January 1st, 2024. </p>
+<p> Let's try to answer this question:</p>
 
-
-<div class="flex-container">
- <img src="./images/coming-soon.jpg" class="shrinkToFit" width="660" style="border:2px solid black">
+<div class="video-container">
+  <iframe
+      src="https://www.youtube-nocookie.com/embed/bxnsPKg1VLY"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
 </div>
 
 
 
+<mcq label="Exercise 1" palette="past" :images="[`./images/bala-nose.png`]" question="A spatial orientation is fully determined by the direction Bala's nose vector points." :choices="[
+    {
+      correct: false,
+      answer: `True`,
+      response: `No, it will not be fully determined.  For example, there are many spatial orientations that will allow Bala's nose vector to point at you!`
+    },
+    {
+      correct: true,
+      answer: `False`,
+      response: `Correct, there is a whole circle's worth of spatial orientations Bala can explore, while keeping the direction of his nose vector fixed.`
+    }
+  ]">
+</mcq>
+
+
+<mcq label="Exercise 2" palette="past" :images="[`./images/bala-nose-hat.png`]" question=" A spatial orientation is fully determined by the directions of the blue nose vector and the red hat vector." :choices="[
+    {
+      correct: true,
+      answer: `True`,
+      response: `That's right, together the nose vector and the hat vector will fully determine a spatial orienation.  Can you see why it takes three parameters to determine a nose vector and a hat vector?`
+    },
+    {
+      correct: false,
+      answer: `False`,
+      response: `Actually, if both Bala's nose vector and hat vector are fixed, then it will be impossible to shift his spatial orientation.`
+    }
+  ]">
+</mcq>
+
+
+
+
+<p> With three degrees of freedom, the set of spatial orientations is rather large!  How can we navigate this vast set?</p>
+
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube-nocookie.com/embed/V6Dr0RaNhxQ"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+
+
+<mcq label="Exercise 3" palette="past" :images="[`./images/exercise-3.png`]" question="Bringing the red mark up to the north pole will bring Bala’s base orientation to the target orientation." :choices="[
+    {
+      correct: false,
+      answer: `True`,
+      response: `Not necessarily.  There are many orientations for which the red mark will sit at the north pole!`
+    },
+    {
+      correct: true,
+      answer: `False`,
+      response: `Correct, we still need to do more work to reach the target orientation.`
+    }
+  ]">
+</mcq>
+
+<challenge label="Challenge 1: Moving between orientations" palette="future" image="./images/challenge-1.png" instruction="Give a general procedure for bringing the base orientation to any target orientation, using rotations about the x, y, and z axes." >
+</challenge>
+
+<p> Write down your procedure, then proceed to the next video, which gives a possible solution:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/WGEtFk8T8BA"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+
+<mcq-pictorial label="Exercise 4: composing rotations" palette="past" :images="[`./images/bala-new-hair.png`]" question="Bala grew some hair!  To celebrate, he first performs a 180° z-rotation, then a 180° x-rotation, and finally a 180° y-rotation.  What is Bala's new orientation?" :choices="[
+    {
+      correct: true,
+      answer: `A`,
+      picture: `./images/quat-w.png`, 
+      response: `Yes!  He's come back to where he started!`
+    },
+    {
+      correct: false,
+      answer: `B`,
+      picture: `./images/quat-x.png`, 
+      response: `Not quite.  Make sure you perform all three rotations.  It's helpful to use a physical model.`
+    },
+    {
+      correct: false,
+      answer: `C`,
+      picture: `./images/quat-y.png`, 
+      response: `No.  Did you perform all three rotations?  It's helpful to use a physical model.`
+    },
+    {
+      correct: false,
+      answer: `D`,
+      picture: `./images/quat-z.png`, 
+      response: `Are you sure?  Use a physical model, and make sure you perform all three rotations.`
+    }
+  ]">
+</mcq-pictorial>
+
+<challenge label="Challenge 2: A rotation relation" palette="future" image="./images/challenge-2.png" instruction="Write down an sequence of x-rotations and y-rotations that will achieve a 90° z-rotation.">
+</challenge>
+
+<p> Did you find a way to achieve a 90° z-rotation, using only x-rotations and y-rotations?  Here's one method, which you can compare to your own:</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/Q6ht5H5GMSg"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+<mcq label="Exercise 5: Orientation Coordinates?" palette="past" :images="[`./images/orientation-coordinates.png`]" question="Let (𝝰, 𝝱, 𝛄) denote a spatial orientation we reach from the base orientation via an x-rotation by angle 𝝰, a y-rotation by angle 𝝱, and a z-rotation by angle 𝛄.  The orientation (𝝰, 𝝱, 𝛄) does not depend on the order these rotations are performed." :choices="[
+    {
+      correct: false,
+      answer: `True`,
+      response: `No!  Rotations do not commute, so the order of operations will affect the final orientation we reach.  For (𝝰, 𝝱, 𝛄) to be well-defined, we need to specify a rotation-order. `
+    },
+    {
+      correct: true,
+      answer: `False`,
+      response: `That's right. Rotations do not commute, so we need to specify a rotation-order, in order to interpret (𝝰, 𝝱, 𝛄) as a well-defined orientation.`
+    }
+  ]">
+</mcq>
+
+<mcq label="Exercise 6: Orientation Coordinates??" palette="past" :images="[]" question=" Okay, let's define (𝝰, 𝝱, 𝛄) to be the spatial orientation we reach by *first* performing an x-rotation by angle 𝝰, *next* a y-rotation by angle 𝝱, and *finally* a z-rotation by angle 𝛄.  Then (𝝰, 𝝱, 𝛄) is well-defined, and also the unique ordered triple that will give us this spatial orientation." :choices="[
+    {
+      correct: false,
+      answer: `Yes, (𝝰, 𝝱, 𝛄) will be the unique representative of the orientation it determines.`,
+      response: `Are you sure?  Can you think of any way to alter the numbers 𝝰, 𝝱, or 𝛄 without changing the resulting orientation?`
+    },
+    {
+      correct: true,
+      answer: `No, we can add 2𝝿 to any entry without altering its rotation, so  (𝝰, 𝝱, 𝛄)  will not be the unique representative.`,
+      response: `That's right. For example (𝝰, 𝝱, 𝛄), (𝝰, 𝝱+2𝝿, 𝛄), and (𝝰, 𝝱, 𝛄-6𝝿) will all lead to the same orientation.  But is this the only redundancy?`
+    },
+    {
+      correct: true,
+      answer: `No, there are relations *between* x, y and z rotations, so (𝝰, 𝝱, 𝛄) will not be the unique representative.`,
+      response: `That's correct.  For example, (90°, 90°, 90°) = (0°, 90°, 0°). But is this the only type of redundancy?`
+    },
+    {
+      correct: true,
+      answer: `Both of the above!`,
+      response: `Correct!  It seems *unique* 'orientation coordinates' are not so easy to construct...I suppose we just have to live with some redundancy!`
+    }
+  ]">
+</mcq>
+
+<md>
+Although they have many quirks, 3-D rotations are still the most natural way to travel through the set of all spatial orientations.  
+</md>
+
+<!-- And once we specify a rotation-order, rotations about the x, y, and z axes do provide a useful way of specifying spatial orientations, despite the redundancies.-->
+
+<p> Let's bring our attention back to the <i>set of all spatial orientations</i> -- which is actually much more than just a set. It is natural to think of it as a <i>space</i>, namely, <i>orientation space</i> !</p>
+
+<div class="video-container">
+  <iframe
+      src="https://www.youtube.com/embed/rTfW3ZgAYqU"
+      width="700"
+      height="480"
+      frameborder="0"
+      allowfullscreen="">
+  </iframe>
+</div>
+
+
+
+
+
+
+
+<video-challenge label="Challenge 3: The belt trick" palette="future" video="https://www.youtube.com/embed/nQrAiMgSA70" :instructions="[`Fix one end of a belt, and twist the other end by 720°.  Using the 'belt trick' in the above video, you can bring the belt back to its original state purely by translating the free end through space.  Try this yourself!`, `Now, suppose the free end of your belt is merely twisted by 360°.  What happens if we attempt to use the belt trick to untwist the belt?`]">
+</video-challenge>
 
 
 <div class="nav-container" style="width: 100%;">
